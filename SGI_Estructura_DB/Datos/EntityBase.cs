@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SGI_DB
+namespace SGI_Estructura_DB.Datos
 {
-    public class Class1
+    public class EntityBase
     {
+        public int Id { get; set; }
     }
 }

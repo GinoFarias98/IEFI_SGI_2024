@@ -15,15 +15,20 @@ namespace SGI_Entidades
         public int PersonasId { get; set; }
         public int TipoRolId { get; set; }
 
-        public Usuario(string aUserName, string aContrasena, string aEmail, bool aEstado, int aPersonasId, int aTipoRolId)
+
+        public Usuario() 
         {
-            UserName = aUserName;
-            Contrasena = aContrasena;
-            Email = aEmail;
-            Estado = aEstado;
-            PersonasId = aPersonasId;
-            TipoRolId = aTipoRolId;
         }
+
+        //public Usuario(string aUserName, string aContrasena, string aEmail, bool aEstado, int aPersonasId, int aTipoRolId)
+        //{
+        //    UserName = aUserName;
+        //    Contrasena = aContrasena;
+        //    Email = aEmail;
+        //    Estado = aEstado;
+        //    PersonasId = aPersonasId;
+        //    TipoRolId = aTipoRolId;
+        //}
 
     }
 }

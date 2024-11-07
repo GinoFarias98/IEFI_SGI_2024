@@ -8,7 +8,7 @@ namespace SGI_Entidades
 {
     public class TipoRol : TablaTipo
     {
-        public TipoRol(string aNombre, string aCodigo) : base(aNombre, aCodigo)
+        public TipoRol()
         {
 ;
         }

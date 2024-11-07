@@ -11,5 +11,10 @@ namespace SGI_Entidades
     {
         public int Id { get; set; }
 
+        protected EntidadBase()
+        {
+            
+        }
+
     }
 }

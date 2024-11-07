@@ -16,18 +16,22 @@ namespace SGI_Entidades
         public string NumBox { get; set; }
         public int TipoDocumentoId { get; set; }
 
-
-        public Persona(string aNombre, string aApellido, string aNumDoc, int aTelefono, bool aEstado, string aNumBox, int aTipoDocumentoId)
+        public Persona()
         {
-                Nombre = aNombre;
-                Apellido = aApellido;
-                NumDoc = aNumDoc;
-                Telefono = aTelefono;
-                Estado = aEstado;
-                Telefono = aTelefono;
-                Estado = aEstado;
-                NumBox = aNumBox;
-                TipoDocumentoId = aTipoDocumentoId;
         }
+
+
+        //public Persona(string aNombre, string aApellido, string aNumDoc, int aTelefono, bool aEstado, string aNumBox, int aTipoDocumentoId)
+        //{
+        //        Nombre = aNombre;
+        //        Apellido = aApellido;
+        //        NumDoc = aNumDoc;
+        //        Telefono = aTelefono;
+        //        Estado = aEstado;
+        //        Telefono = aTelefono;
+        //        Estado = aEstado;
+        //        NumBox = aNumBox;
+        //        TipoDocumentoId = aTipoDocumentoId;
+        //}
     }
 }

@@ -17,16 +17,20 @@ namespace SGI_Entidades
         public int UsuarioAsignadoId { get; set; }
         public int ObjetoId { get; set; }
 
-        public Ticket(string aNumeroTKT, DateTime? aFechaCreacion, DateTime? aFechaCierre, string aDescripcionProblema, string aSolucion, int aUsuarioReportaId, int aUsuarioAsignadoId, int aObjetoId)
-        {
-            NumeroTKT = aNumeroTKT;
-            FechaCreacion = aFechaCreacion;
-            FechaCierre = aFechaCierre;
-            DescripcionProblema = aDescripcionProblema;
-            Solucion = aSolucion;
-            UsuarioReportaId = aUsuarioReportaId;
-            UsuarioAsignadoId = aUsuarioAsignadoId;
-            ObjetoId = aObjetoId;
+        public Ticket() 
+        { 
         }
+
+        //public Ticket(string aNumeroTKT, DateTime? aFechaCreacion, DateTime? aFechaCierre, string aDescripcionProblema, string aSolucion, int aUsuarioReportaId, int aUsuarioAsignadoId, int aObjetoId)
+        //{
+        //    NumeroTKT = aNumeroTKT;
+        //    FechaCreacion = aFechaCreacion;
+        //    FechaCierre = aFechaCierre;
+        //    DescripcionProblema = aDescripcionProblema;
+        //    Solucion = aSolucion;
+        //    UsuarioReportaId = aUsuarioReportaId;
+        //    UsuarioAsignadoId = aUsuarioAsignadoId;
+        //    ObjetoId = aObjetoId;
+        //}
     }
 }

@@ -8,7 +8,7 @@ namespace SGI_Entidades
 {
     public class TipoDocumento : TablaTipo
     {
-        public TipoDocumento(string aNombre, string aCodigo) : base(aNombre, aCodigo)
+        public TipoDocumento()
         {
                 
         }

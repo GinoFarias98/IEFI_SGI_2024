@@ -12,12 +12,17 @@ namespace SGI_Entidades
         public string Nombre { get; set; }
         public string Codigo { get; set; }
 
-        // solo las entidades que hereden de esta llaman al constructor
-        protected TablaTipo(string aNombre, string aCodigo)
+        protected TablaTipo()
         {
-            Nombre = aNombre;
-            Codigo = aCodigo;
+                
         }
+
+        // solo las entidades que hereden de esta llaman al constructor
+        //protected TablaTipo(string aNombre, string aCodigo)
+        //{
+        //    Nombre = aNombre;
+        //    Codigo = aCodigo;
+        //}
 
     }
     

@@ -15,14 +15,19 @@ namespace SGI_Entidades.Entidades
         public string NumeroSerie { get; set; }
         public int TipoObjetoId { get; set; }
 
-        public Objeto(string aNombre, string aDescripcion, string aMarca, string aModelo, string aNumeroSerie, int tipoObjetoId)
+        public Objeto()
         {
-            Nombre = aNombre;
-            Descripcion = aDescripcion;
-            Marca = aMarca;
-            Modelo = aModelo;
-            NumeroSerie = aNumeroSerie;
-            TipoObjetoId = tipoObjetoId;
+
         }
+
+        //public Objeto(string aNombre, string aDescripcion, string aMarca, string aModelo, string aNumeroSerie, int tipoObjetoId)
+        //{
+        //    Nombre = aNombre;
+        //    Descripcion = aDescripcion;
+        //    Marca = aMarca;
+        //    Modelo = aModelo;
+        //    NumeroSerie = aNumeroSerie;
+        //    TipoObjetoId = tipoObjetoId;
+        //}
     }
 }

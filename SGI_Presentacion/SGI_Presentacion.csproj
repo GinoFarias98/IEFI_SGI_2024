@@ -46,8 +46,98 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Formularios Padre\PlantillaTablaTipo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios Padre\PlantillaTablaTipo.Designer.cs">
+      <DependentUpon>PlantillaTablaTipo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormulariosHijo\ObjetoABM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormulariosHijo\ObjetoABM.Designer.cs">
+      <DependentUpon>ObjetoABM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormulariosHijo\PersonaABM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormulariosHijo\PersonaABM.Designer.cs">
+      <DependentUpon>PersonaABM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios Padre\Plantilla.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios Padre\Plantilla.Designer.cs">
+      <DependentUpon>Plantilla.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormulariosHijo\TipoDocumentoABM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormulariosHijo\TipoDocumentoABM.Designer.cs">
+      <DependentUpon>TipoDocumentoABM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormulariosHijo\TipoObjetoABM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormulariosHijo\TipoObjetoABM.Designer.cs">
+      <DependentUpon>TipoObjetoABM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormulariosHijo\TipoRolABM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormulariosHijo\TipoRolABM.Designer.cs">
+      <DependentUpon>TipoRolABM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormulariosHijo\UsuarioABM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormulariosHijo\UsuarioABM.Designer.cs">
+      <DependentUpon>UsuarioABM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios Padre\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios Padre\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios Padre\OpcionesAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios Padre\OpcionesAdmin.Designer.cs">
+      <DependentUpon>OpcionesAdmin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Formularios Padre\PlantillaTablaTipo.resx">
+      <DependentUpon>PlantillaTablaTipo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormulariosHijo\ObjetoABM.resx">
+      <DependentUpon>ObjetoABM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormulariosHijo\PersonaABM.resx">
+      <DependentUpon>PersonaABM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios Padre\Plantilla.resx">
+      <DependentUpon>Plantilla.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormulariosHijo\TipoDocumentoABM.resx">
+      <DependentUpon>TipoDocumentoABM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormulariosHijo\TipoObjetoABM.resx">
+      <DependentUpon>TipoObjetoABM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormulariosHijo\TipoRolABM.resx">
+      <DependentUpon>TipoRolABM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormulariosHijo\UsuarioABM.resx">
+      <DependentUpon>UsuarioABM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios Padre\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios Padre\OpcionesAdmin.resx">
+      <DependentUpon>OpcionesAdmin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -69,6 +159,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SGI_Entidades\SGI_Entidades.csproj">
+      <Project>{94fbb5a8-c632-4cb1-bdc5-cb0186f08888}</Project>
+      <Name>SGI_Entidades</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SGI_Negociacion\SGI_Negociacion.csproj">
+      <Project>{e3231086-c05e-4453-bcb7-6a05ccde02c9}</Project>
+      <Name>SGI_Negociacion</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

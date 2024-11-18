@@ -41,7 +41,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NegociadorGenerico.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SGI_DB\SGI_DB.csproj">
+      <Project>{74515125-33fa-494b-9806-b680cdebc8fc}</Project>
+      <Name>SGI_DB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SGI_Entidades\SGI_Entidades.csproj">
+      <Project>{94fbb5a8-c632-4cb1-bdc5-cb0186f08888}</Project>
+      <Name>SGI_Entidades</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace SGI_Entidades
 {
+
     public class TipoObjeto : TablaTipo
     {
         public TipoObjeto()

@@ -1,73 +1,101 @@
-﻿using SGI_Negociacion;
+﻿using SGI_Entidades;
+using SGI_Negociacion;
 using SGI_Presentacion.Formularios_Hijo;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SGI_Presentacion.Formularios_Padre
 {
-    public partial class PlantillaTablaTipo : Plantilla 
+    public partial class PlantillaTablaTipo : Plantilla
     {
         public PlantillaTablaTipo()
         {
             InitializeComponent();
             ConfigComboBox();
 
+
             Plantilla plantilla = new Plantilla();
 
             this.Size = plantilla.Size;
-
             this.StartPosition = FormStartPosition.CenterParent;
-
             this.lblTitulo.Text = this.Text;
+
         }
 
-        protected virtual void ConfigComboBox()  
+        protected virtual void ConfigComboBox()
         {
-            CbOpciones.Items.Add("Alta");
-            CbOpciones.Items.Add("Baja");
-            CbOpciones.Items.Add("Modificar");
-            CbOpciones.Items.Add("Mostrar");
-
-            // puede ser utilizado o sobrescrito por cualquier clase que herede de la clase actual, pero no por clases externas que no estén en la jerarquía
-
+            CbOpciones.Items.AddRange(new[] { "Alta", "Baja", "Modificar", "Mostrar" });
         }
 
         protected virtual void BtAceptarOpcion_Click(object sender, EventArgs e)
         {
-
-            if (CbOpciones.SelectedItem == null || CbOpciones.SelectedItem.ToString() == "Opciones")
+            if (CbOpciones.SelectedItem == null)
             {
-                MessageBox.Show("Seleccione una opcion valida antes de continuar", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Seleccione una opción válida antes de continuar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            string Opcion = CbOpciones.SelectedItem.ToString().ToLower();
-            NegociadorGenerico<object> Negociador = new NegociadorGenerico<object>();
-            object Entidad = CrearEntidad();
+            string opcion = CbOpciones.SelectedItem.ToString().ToLower();
+            ProcesarOpcion(opcion);
+        }
 
-            switch (Opcion)
+        protected virtual void ProcesarOpcion(string opcion)
+        {
+            object entidad = CrearEntidad();
+            if (entidad == null)
             {
+                MessageBox.Show("Entidad no válida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
+            switch (entidad)
+            {
+                case TipoObjeto tipoObjeto:
+                    ProcesarConNegociador(new NegociadorGenerico<TipoObjeto>(), opcion, tipoObjeto);
+                    break;
+
+                case TipoDocumento tipoDocumento:
+                    ProcesarConNegociador(new NegociadorGenerico<TipoDocumento>(), opcion, tipoDocumento);
+                    break;
+
+                case TipoRol rol:
+                    ProcesarConNegociador(new NegociadorGenerico<TipoRol>(), opcion, rol);
+                    break;
+
+                default:
+                    MessageBox.Show("Tipo de entidad no soportado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    break;
+            }
+        }
+
+        private void ProcesarConNegociador<T>(NegociadorGenerico<T> negociador, string opcion, T entidad) where T : class, new()
+        {
+            switch (opcion)
+            {
                 case "alta":
-                    Negociador.abmNegociadorGenerico(Opcion, Entidad);
+                    negociador.abmNegociadorGenerico(string.Empty, string.Empty, opcion, entidad);
                     MessageBox.Show("Alta realizada exitosamente.");
                     break;
 
                 case "baja":
-                    Negociador.abmNegociadorGenerico(Opcion, Entidad);
+
+                    negociador.abmNegociadorGenerico(LblCodigo.Tag.ToString(), txtCodigo.Text, opcion, entidad);
                     MessageBox.Show("Baja realizada exitosamente.");
                     break;
 
                 case "modificar":
-                    Negociador.abmNegociadorGenerico(Opcion, Entidad);
-                    MessageBox.Show("modificacion realizada exitosamente.");
+
+                    if (CbCodigosModif.SelectedItem == null)
+                    {
+                        MessageBox.Show("Seleccione un código para modificar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    string CodigoSeleccionado = CbCodigosModif.Text;
+
+                    negociador.abmNegociadorGenerico(LblCodigo.Tag.ToString(), CodigoSeleccionado, opcion, entidad);
+                    MessageBox.Show("Modificación realizada exitosamente.");
                     break;
 
                 case "mostrar":
@@ -75,25 +103,30 @@ namespace SGI_Presentacion.Formularios_Padre
                     break;
 
                 default:
+                    MessageBox.Show("Opción no válida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     break;
             }
-
         }
+
+
 
         protected virtual object CrearEntidad()
         {
-            throw new NotImplementedException();
+            throw new NotImplementedException("Debe implementarse en las clases derivadas.");
         }
 
         protected virtual void MostrarEntidades()
         {
-            NegociadorGenerico<Object> NegociadorMostrar = new NegociadorGenerico<Object>();
-            var DataSet = NegociadorMostrar.listadoProductos(typeof(Object).Name);
-            DgvPlantillaTipo.DataSource = DataSet.Tables[0];
+            throw new NotImplementedException("Debe implementarse en las clases derivadas.");
         }
 
         protected TextBox txtNombre => TxtNombre;
         protected TextBox txtCodigo => TxtCodigo;
         protected DataGridView dgvPlantillaTipo => DgvPlantillaTipo;
+        protected Label lblCodigo => LblCodigo;
+        protected Label lblCodModif => LblCodModif;
+        protected ComboBox cbCodigosModif => CbCodigosModif;
+        protected ComboBox cbOpciones => CbOpciones;
+
     }
 }

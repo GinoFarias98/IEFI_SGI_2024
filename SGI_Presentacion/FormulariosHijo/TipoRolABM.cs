@@ -46,8 +46,8 @@ namespace SGI_Presentacion.Formularios_Hijo
         protected override void MostrarEntidades()
         {
             NegociadorGenerico<TipoRol> NegTipoRol = new NegociadorGenerico<TipoRol>();
-            var DataSet = NegTipoRol.listadoProductos("TipoRol");
-            dgvPlantillaTipo.DataSource = DataSet.Tables[0];
+            //var DataSet = NegTipoRol.listadoProductos("TipoRol");
+           // dgvPlantillaTipo.DataSource = DataSet.Tables[0];
         }
     }
 }

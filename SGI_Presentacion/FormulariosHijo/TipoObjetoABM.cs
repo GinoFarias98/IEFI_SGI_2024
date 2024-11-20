@@ -13,12 +13,11 @@ using System.Windows.Forms;
 
 namespace SGI_Presentacion.Formularios_Hijo
 {
-    public partial class TipoObjetoABM : Plantilla
+    public partial class TipoObjetoABM : PlantillaTablaTipo
     {
         public TipoObjetoABM()
         {
             InitializeComponent();
-            ConfigComboBox();
 
             Plantilla plantilla = new Plantilla();
 
@@ -28,57 +27,73 @@ namespace SGI_Presentacion.Formularios_Hijo
 
             this.lblTitulo.Text = this.Text;
 
-        }
-
-        protected void ConfigComboBox()
-        {
-            CbTObjeto.Items.Add("Alta");
-            CbTObjeto.Items.Add("Baja");
-            CbTObjeto.Items.Add("Modificar");
-            CbTObjeto.Items.Add("Mostrar");
-
-            // puede ser utilizado o sobrescrito por cualquier clase que herede de la clase actual, pero no por clases externas que no estén en la jerarquía
+           cbOpciones.SelectedIndexChanged += Modif_SelectedIndexChanged;
 
         }
 
-        private void BtAceptarOpciones_Click(object sender, EventArgs e)
-        {
-            string Opcion = CbTObjeto.SelectedItem.ToString().ToLower();
-            NegociadorGenerico<TipoObjeto> negociadorGenerico = new NegociadorGenerico<TipoObjeto>();
 
-            TipoObjeto Tobjeto = new TipoObjeto
+        private void Modif_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbOpciones.SelectedItem != null && cbOpciones.SelectedItem.ToString() == "Modificar")
             {
-                Nombre = TxtNombre.Text,
-                Codigo = TxtCodigo.Text
+                cbCodigosModif.Visible = true;
+                lblCodModif.Visible = true;
+
+                CargarCodigoEnCB<TipoObjeto>(new NegociadorGenerico<TipoObjeto>());
+            }
+            else
+            {
+                cbCodigosModif.Visible = false;
+                lblCodModif.Visible = false;
+            }
+            //this.Refresh();
+        }
+
+        protected override void ConfigComboBox()
+        {
+            base.ConfigComboBox();
+        }
+
+        protected override object CrearEntidad()
+        {
+            return new TipoObjeto
+            {
+                Nombre = txtNombre.Text,
+                Codigo = txtCodigo.Text
             };
+        }
 
-            switch (Opcion)
+        protected override void MostrarEntidades()
+        {
+            NegociadorGenerico<TipoObjeto> negociador = new NegociadorGenerico<TipoObjeto>();
+            var data = negociador.ActualizarDs(lblCodigo.Tag.ToString(), txtCodigo.Text);
+            dgvPlantillaTipo.DataSource = data;
+        }
+
+        private void CargarCodigoEnCB<T>(NegociadorGenerico<T> Negociador) where T : class, new()
+        {
+            try
+            {
+                DataTable DT = Negociador.ActualizarDs(lblCodigo.Tag.ToString()); //no pongo el otro atributo por q si es nulo trae todo y eso es lo que quiero
+
+                if (DT.Rows.Count > 0)
+                {
+                    cbCodigosModif.DataSource = DT;
+                    cbCodigosModif.DisplayMember = "Codigo";
+                    cbCodigosModif.ValueMember = "Id";
+                }
+                else
+                {
+                    MessageBox.Show("No se encontraron códigos para cargar en el ComboBox.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
+            }
+            catch (Exception ex)
             {
 
-                case "alta":
-                    negociadorGenerico.abmNegociadorGenerico(Opcion, Tobjeto);
-                    MessageBox.Show("Alta realizada exitosamente.");
-                    break;
+                MessageBox.Show($"Error al cargar los códigos: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                case "baja":
-                    negociadorGenerico.abmNegociadorGenerico(Opcion, Tobjeto);
-                    MessageBox.Show("Baja realizada exitosamente.");
-                    break;
-
-                case "modificar":
-                    negociadorGenerico.abmNegociadorGenerico(Opcion, Tobjeto);
-                    MessageBox.Show("modificacion realizada exitosamente.");
-                    break;
-
-                case "mostrar":
-                    var DataSet = negociadorGenerico.listadoProductos("TipoObjeto");
-                    DgvTipoObjeto.DataSource = DataSet.Tables[0];
-                    break;
-
-                default:
-                    break;
-            }  
-
+            }
         }
     }
 

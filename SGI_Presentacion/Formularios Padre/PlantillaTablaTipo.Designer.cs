@@ -33,9 +33,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.TxtNombre = new System.Windows.Forms.TextBox();
             this.TxtCodigo = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.LblCodigo = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.DgvPlantillaTipo = new System.Windows.Forms.DataGridView();
+            this.CbCodigosModif = new System.Windows.Forms.ComboBox();
+            this.LblCodModif = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvPlantillaTipo)).BeginInit();
             this.SuspendLayout();
@@ -82,14 +84,15 @@
             this.TxtCodigo.Size = new System.Drawing.Size(167, 20);
             this.TxtCodigo.TabIndex = 6;
             // 
-            // label2
+            // LblCodigo
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(54, 136);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(40, 13);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Codigo";
+            this.LblCodigo.AutoSize = true;
+            this.LblCodigo.Location = new System.Drawing.Point(54, 136);
+            this.LblCodigo.Name = "LblCodigo";
+            this.LblCodigo.Size = new System.Drawing.Size(40, 13);
+            this.LblCodigo.TabIndex = 5;
+            this.LblCodigo.Tag = "Codigo";
+            this.LblCodigo.Text = "Codigo";
             // 
             // groupBox1
             // 
@@ -112,14 +115,37 @@
             this.DgvPlantillaTipo.Size = new System.Drawing.Size(365, 212);
             this.DgvPlantillaTipo.TabIndex = 0;
             // 
+            // CbCodigosModif
+            // 
+            this.CbCodigosModif.FormattingEnabled = true;
+            this.CbCodigosModif.Location = new System.Drawing.Point(174, 171);
+            this.CbCodigosModif.Name = "CbCodigosModif";
+            this.CbCodigosModif.Size = new System.Drawing.Size(121, 21);
+            this.CbCodigosModif.TabIndex = 8;
+            this.CbCodigosModif.Text = "Codigos";
+            this.CbCodigosModif.Visible = false;
+            // 
+            // LblCodModif
+            // 
+            this.LblCodModif.AutoSize = true;
+            this.LblCodModif.Location = new System.Drawing.Point(54, 174);
+            this.LblCodModif.Name = "LblCodModif";
+            this.LblCodModif.Size = new System.Drawing.Size(110, 13);
+            this.LblCodModif.TabIndex = 9;
+            this.LblCodModif.Tag = "Codigo";
+            this.LblCodModif.Text = "Seleccione un codigo";
+            this.LblCodModif.Visible = false;
+            // 
             // PlantillaTablaTipo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(385, 450);
+            this.Controls.Add(this.LblCodModif);
+            this.Controls.Add(this.CbCodigosModif);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.TxtCodigo);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.LblCodigo);
             this.Controls.Add(this.TxtNombre);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.BtAceptarOpcion);
@@ -130,9 +156,11 @@
             this.Controls.SetChildIndex(this.BtAceptarOpcion, 0);
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.TxtNombre, 0);
-            this.Controls.SetChildIndex(this.label2, 0);
+            this.Controls.SetChildIndex(this.LblCodigo, 0);
             this.Controls.SetChildIndex(this.TxtCodigo, 0);
             this.Controls.SetChildIndex(this.groupBox1, 0);
+            this.Controls.SetChildIndex(this.CbCodigosModif, 0);
+            this.Controls.SetChildIndex(this.LblCodModif, 0);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DgvPlantillaTipo)).EndInit();
             this.ResumeLayout(false);
@@ -147,8 +175,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox TxtNombre;
         private System.Windows.Forms.TextBox TxtCodigo;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label LblCodigo;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView DgvPlantillaTipo;
+        private System.Windows.Forms.ComboBox CbCodigosModif;
+        private System.Windows.Forms.Label LblCodModif;
     }
 }

@@ -98,7 +98,7 @@
             // 
             this.groupBox1.Controls.Add(this.DgvPlantillaTipo);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox1.Location = new System.Drawing.Point(0, 205);
+            this.groupBox1.Location = new System.Drawing.Point(0, 212);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(10);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(10);
@@ -140,7 +140,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(385, 450);
+            this.ClientSize = new System.Drawing.Size(385, 457);
             this.Controls.Add(this.LblCodModif);
             this.Controls.Add(this.CbCodigosModif);
             this.Controls.Add(this.groupBox1);

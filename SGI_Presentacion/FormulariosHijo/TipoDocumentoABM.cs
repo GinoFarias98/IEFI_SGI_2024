@@ -70,6 +70,8 @@ namespace SGI_Presentacion.Formularios_Hijo
             dgvPlantillaTipo.DataSource = data;
         }
 
+
+        //Creo que esto puede ir en plantillaTipo para mejorar rendimiento, haciendo al metodo protected. Actualización, si se puede.
         private void CargarCodigoEnCB<T>(NegociadorGenerico<T> Negociador) where T : class, new()
         {
             try

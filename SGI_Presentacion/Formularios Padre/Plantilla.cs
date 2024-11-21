@@ -74,5 +74,7 @@ namespace SGI_Presentacion.Formularios_Hijo
 
         protected Label lblTitulo => LblTitulo;
 
+
     }
+
 }

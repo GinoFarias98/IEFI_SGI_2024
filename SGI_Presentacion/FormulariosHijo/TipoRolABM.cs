@@ -27,6 +27,9 @@ namespace SGI_Presentacion.Formularios_Hijo
 
             this.lblTitulo.Text = this.Text;
 
+            cbOpciones.SelectedIndexChanged += Modif_SelectedIndexChanged;
+
+
         }
 
         protected override void ConfigComboBox()
@@ -34,20 +37,64 @@ namespace SGI_Presentacion.Formularios_Hijo
             base.ConfigComboBox();
         }
 
-        //protected override object CrearEntidad()
-        //{
-        //    return new TipoRol
-        //    {
-        //        Nombre = txtNombre.Text,
-        //        Codigo = txtCodigo.Text
-        //    };
-        //}
+        private void Modif_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbOpciones.SelectedItem != null && cbOpciones.SelectedItem.ToString() == "Modificar")
+            {
+                cbCodigosModif.Visible = true;
+                lblCodModif.Visible = true;
+
+                CargarCodigoEnCB<TipoRol>(new NegociadorGenerico<TipoRol>());
+            }
+            else
+            {
+                cbCodigosModif.Visible = false;
+                lblCodModif.Visible = false;
+            }
+            //this.Refresh();
+        }
+
+        protected override object CrearEntidad()
+        {
+            return new TipoRol
+            {
+                Nombre = txtNombre.Text,
+                Codigo = txtCodigo.Text
+            };
+        }
 
         protected override void MostrarEntidades()
         {
-            NegociadorGenerico<TipoRol> NegTipoRol = new NegociadorGenerico<TipoRol>();
-            //var DataSet = NegTipoRol.listadoProductos("TipoRol");
-           // dgvPlantillaTipo.DataSource = DataSet.Tables[0];
+            NegociadorGenerico<TipoRol> negociador = new NegociadorGenerico<TipoRol>();
+            var data = negociador.ActualizarDs(lblCodigo.Tag.ToString(), txtCodigo.Text);
+            dgvPlantillaTipo.DataSource = data;
         }
+
+        private void CargarCodigoEnCB<T>(NegociadorGenerico<T> Negociador) where T : class, new()
+        {
+            try
+            {
+                DataTable DT = Negociador.ActualizarDs(lblCodigo.Tag.ToString()); //no pongo el otro atributo por q si es nulo trae todo y eso es lo que quiero
+
+                if (DT.Rows.Count > 0)
+                {
+                    cbCodigosModif.DataSource = DT;
+                    cbCodigosModif.DisplayMember = "Codigo";
+                    cbCodigosModif.ValueMember = "Id";
+                }
+                else
+                {
+                    MessageBox.Show("No se encontraron códigos para cargar en el ComboBox.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show($"Error al cargar los códigos: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+        }
+
     }
 }

@@ -60,8 +60,10 @@
             // 
             // BtMinimizar
             // 
+            this.BtMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.BtMinimizar.Location = new System.Drawing.Point(314, 6);
             this.BtMinimizar.Name = "BtMinimizar";
+            this.BtMinimizar.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.BtMinimizar.Size = new System.Drawing.Size(29, 23);
             this.BtMinimizar.TabIndex = 2;
             this.BtMinimizar.Text = "_";
@@ -70,8 +72,10 @@
             // 
             // BtCerrar
             // 
+            this.BtCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.BtCerrar.Location = new System.Drawing.Point(349, 6);
             this.BtCerrar.Name = "BtCerrar";
+            this.BtCerrar.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.BtCerrar.Size = new System.Drawing.Size(29, 23);
             this.BtCerrar.TabIndex = 3;
             this.BtCerrar.Text = "X";
@@ -82,9 +86,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.ClientSize = new System.Drawing.Size(381, 453);
             this.Controls.Add(this.panelPlantilla);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Plantilla";
             this.Text = "Plantilla";
             this.panelPlantilla.ResumeLayout(false);

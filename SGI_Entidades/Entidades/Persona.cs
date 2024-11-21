@@ -11,10 +11,10 @@ namespace SGI_Entidades
         public string Nombre { get; set; }
         public string Apellido { get; set; }
         public string NumDoc { get; set; }
-        public int Telefono { get; set; }
+        public string Telefono { get; set; }
         public bool Estado { get; set; }
         public string NumBox { get; set; }
-        public int TipoDocumentoId { get; set; }
+        public int TipoDocumento_Id { get; set; }
 
         public Persona()
         {

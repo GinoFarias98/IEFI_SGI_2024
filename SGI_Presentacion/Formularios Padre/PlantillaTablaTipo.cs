@@ -28,6 +28,8 @@ namespace SGI_Presentacion.Formularios_Padre
             CbOpciones.Items.AddRange(new[] { "Alta", "Baja", "Modificar", "Mostrar" });
         }
 
+
+
         protected virtual void BtAceptarOpcion_Click(object sender, EventArgs e)
         {
             if (CbOpciones.SelectedItem == null)
@@ -127,6 +129,7 @@ namespace SGI_Presentacion.Formularios_Padre
         protected Label lblCodModif => LblCodModif;
         protected ComboBox cbCodigosModif => CbCodigosModif;
         protected ComboBox cbOpciones => CbOpciones;
+
 
     }
 }

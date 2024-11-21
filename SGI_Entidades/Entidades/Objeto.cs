@@ -8,12 +8,13 @@ namespace SGI_Entidades.Entidades
 {
     public class Objeto : EntidadBase
     {
+        public string Codigo { get; set; }
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
         public string Marca { get; set; }
         public string Modelo { get; set; }
         public string NumeroSerie { get; set; }
-        public int TipoObjetoId { get; set; }
+        public int TipoObjeto_Id { get; set; }
 
         public Objeto()
         {
